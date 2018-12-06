@@ -20,24 +20,31 @@ GPIO.setup( led, GPIO.OUT )
 GPIO.setup( pir, GPIO.IN )
 
 servo = 25
-pen_down_duty_cycle = 9.5
+pen_down_duty_cycle = 10
 pen_up_duty_cycle = 12
 # Set Servo motor to output
 GPIO.setup( servo, GPIO.OUT )
 # not sure what this is anymore, look into
 pwm = GPIO.PWM( servo, 50 )
 # we always start with the pen up
+pen_sleep = 2
 pwm.start( pen_up_duty_cycle )
+time.sleep(pen_sleep)
+pwm.ChangeDutyCycle(0)
 
 def pen_down():
     global pwm
     print "> pen down"
     pwm.ChangeDutyCycle( pen_down_duty_cycle )
+    time.sleep(pen_sleep)
+    pwm.ChangeDutyCycle(0)
 
 def pen_up():
     global pwm
     print "> pen up"
     pwm.ChangeDutyCycle( pen_up_duty_cycle )
+    time.sleep(pen_sleep)
+    pwm.ChangeDutyCycle(0)
 
 def led_on():
     print "> LED on"
