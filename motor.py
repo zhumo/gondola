@@ -187,6 +187,7 @@ try:
     web.arbitrary_html( '<br/>' )
     web.register( '<textarea cols="50" rows="24" onInput="draw_go_to_code(this.value, document.getElementById(\'canvas\'));"></textarea><canvas id="canvas" width="300" height="300"></canvas><button>Go!</button>', parse_go_to_code )
     
+    web.arbitrary_html( '<textarea cols="50" rows="24" onInput="gcode_to_turtle(this.value);"></textarea>' )
 #### -_-
     motion_led_on = False
     while True:
